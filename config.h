@@ -24,7 +24,8 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "⌨️", "🦊", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "⌨️", "🌐", "3", "4", "5", "6", "7", "8", "9" };
+static const char *defaulttagapps[] = { "st", "chromium", NULL, NULL, NULL, NULL, NULL, NULL, NULL };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -33,8 +34,8 @@ static const Rule rules[] = {
 	*/
 	/* class      instance    title       tags mask     isfloating   monitor */
 	//{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "St",       "st",       NULL,       1 << 1,       0,           -1 },
-	{ "Firefox",  "firefox",  NULL,       1 << 2,       0,           -1 },
+	{ "St",        "st",         NULL,       1 << 0,       0,           -1 },
+	{ "Chromium",  "chromium",   NULL,       1 << 1,       0,           -1 },
 };
 
 /* layout(s) */
@@ -70,6 +71,7 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_s,      spawndefault,   {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
